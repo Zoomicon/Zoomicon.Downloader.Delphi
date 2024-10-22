@@ -2,18 +2,19 @@ unit Test.Zoomicon.Downloader; //Delphi DUnit Test Cases
 
 interface
   uses
-    Zoomicon.Cache.Models, //for IContentCache
-    TestFramework,
+    System.Classes,
     System.Net.URLClient,
-    System.Classes;
+    TestFramework, //for testing with DUnitX
+    //
+    Zoomicon.Cache.Models; //for IContentCache
 
   const
     DOWNLOAD_TIMEOUT: Cardinal = 10000; //10 sec (can also use INFINITE)
 
-    DOWNLOAD_URI_STR = 'https://raw.githubusercontent.com/zoomicon/READCOM_Gallery/master/Gallery/README.md';
+    DOWNLOAD_URI_STR = 'https://raw.githubusercontent.com/Zoomicon/READCOM_Gallery/master/Gallery/README.md';
     SAVE_FILENAME = 'Test1.md';
 
-    DOWNLOAD_URI_STR_NOCACHE = 'https://raw.githubusercontent.com/zoomicon/READCOM_Gallery/master/Gallery/Assets/Images/README.md';
+    DOWNLOAD_URI_STR_NOCACHE = 'https://raw.githubusercontent.com/Zoomicon/READCOM_Gallery/master/Gallery/Assets/Images/README.md';
     SAVE_FILENAME_NOCACHE = 'Test2.md';
 
     DOWNLOAD_URI_WRONG = 'blablabla';
@@ -21,7 +22,20 @@ interface
 
   type
 
-    // Test methods for class TFileDownloader
+    {$REGION 'TestTDownloader'}
+
+    TestTDownloader = class(TTestCase)
+      public
+        procedure SetUp; override;
+        procedure TearDown; override;
+
+      published //need to pubish Test cases for them to be used
+        procedure TestGetUriWithFallbackCache;
+    end;
+
+    {$ENDREGION}
+
+    {$REGION 'TestTFileDownloader'}
 
     TestTFileDownloader = class(TTestCase)
       strict private
@@ -44,13 +58,45 @@ interface
         procedure TestWrongUrlDownload;
     end;
 
+    {$ENDREGION}
+
 implementation
   uses
+    System.SysUtils,
+    System.IOUtils,
+    //
     Zoomicon.Cache.Classes, //for TFileCache
     Zoomicon.Downloader.Models,
-    Zoomicon.Downloader.Classes,
-    System.SysUtils,
-    System.IOUtils;
+    Zoomicon.Downloader.Classes;
+
+{$REGION 'TestTDownloader'}
+
+procedure TestTDownloader.SetUp;
+begin
+  inherited;
+  //NOP
+end;
+
+procedure TestTDownloader.TearDown;
+begin
+  inherited;
+  //NOP
+end;
+
+procedure TestTDownloader.TestGetUriWithFallbackCache;
+begin
+  var FUri := DOWNLOAD_URI_STR;
+  var FMemStream := TDownloader.GetUriWithFallbackCache(nil, FUri);
+  try
+    CheckTrue(FMemStream <> nil, 'Uri ' + FUri + ' was not fetched');
+  finally
+    FreeAndNil(FMemStream);
+  end;
+end;
+
+{$ENDREGION}
+
+{$REGION 'TestTFileDownloader'}
 
 {$region 'SetUp / TearDown'}
 
@@ -61,7 +107,7 @@ end;
 
 procedure TestTFileDownloader.TearDown;
 begin
-  //FContentCache is reference counted, so object it points to will be released automatically
+  FContentCache := nil; //reference counted (interface reference), so object it points to will be released automatically when its reference count drops to 0
 end;
 
 {$endregion}
@@ -148,8 +194,11 @@ begin
   end;
 end;
 
+{$ENDREGION}
+
 initialization
   // Register any test cases with the test runner
+  RegisterTest(TestTDownloader.Suite);
   RegisterTest(TestTFileDownloader.Suite);
 end.
 

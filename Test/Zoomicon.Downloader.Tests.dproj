@@ -184,8 +184,8 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Test.Zoomicon.Downloader.pas"/>
-        <DCCReference Include="..\Zoomicon.Downloader.Classes.pas"/>
-        <DCCReference Include="..\Zoomicon.Downloader.Models.pas"/>
+        <DCCReference Include="..\Source\Zoomicon.Downloader.Classes.pas"/>
+        <DCCReference Include="..\Source\Zoomicon.Downloader.Models.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

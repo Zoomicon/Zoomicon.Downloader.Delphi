@@ -11,14 +11,14 @@ program Zoomicon.Downloader.Tests;
 }
 
 {$IFDEF CONSOLE_TESTRUNNER}
-{$APPTYPE CONSOLE}
+  {$APPTYPE CONSOLE}
 {$ENDIF}
 
 uses
   DUnitTestRunner,
   Test.Zoomicon.Downloader in 'Test.Zoomicon.Downloader.pas',
-  Zoomicon.Downloader.Classes in '..\Zoomicon.Downloader.Classes.pas',
-  Zoomicon.Downloader.Models in '..\Zoomicon.Downloader.Models.pas';
+  Zoomicon.Downloader.Classes in '..\Source\Zoomicon.Downloader.Classes.pas',
+  Zoomicon.Downloader.Models in '..\Source\Zoomicon.Downloader.Models.pas';
 
 {$R *.RES}
 

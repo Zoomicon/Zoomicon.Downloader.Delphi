@@ -77,6 +77,8 @@ interface
         procedure SetPaused(const Value: Boolean);
         function IsTerminated: Boolean;
 
+        class function GetUriWithFallbackCache(const AOwner: TComponent; const Uri: string; const Timeout: Cardinal = DEFAULT_DOWNLOAD_TIMEOUT): TMemoryStream;
+
       published
         property ContentCache: IContentCache read FContentCache write FContentCache;
         property OnlyFallbackCache: Boolean read FOnlyFallbackCache write FOnlyFallbackCache default false;
@@ -116,10 +118,8 @@ interface
         property Filepath: String read FFilepath write FFilepath;
     end;
 
-  function DownloadFileWithFallbackCache(const AOwner: TComponent; const url: string; const Timeout: Cardinal = DEFAULT_DOWNLOAD_TIMEOUT): TMemoryStream;
-
   var
-    FileCache: IFileCache;
+    DefaultFileCache: IFileCache;
 
   procedure Register;
 
@@ -449,15 +449,15 @@ end;
 
 {$REGION 'Helper methods'}
 
-function DownloadFileWithFallbackCache(const AOwner: TComponent; const Url: string; const Timeout: Cardinal = DEFAULT_DOWNLOAD_TIMEOUT): TMemoryStream;
+class function TDownloader.GetUriWithFallbackCache(const AOwner: TComponent; const Uri: string; const Timeout: Cardinal = DEFAULT_DOWNLOAD_TIMEOUT): TMemoryStream;
 begin
   result := TMemoryStream.Create; //caller should free this
-  var FileDownloader := TDownloader.Create(AOwner, TURI.Create(Url), result, FileCache, {AutoStart=}true);
+  var FDownloader := TDownloader.Create(AOwner, TURI.Create(Uri), result, DefaultFileCache, {AutoStart=}true);
   try
-    FileDownloader.OnlyFallbackCache := true; //would use this if we only wanted to fallback to cache in case of download errors / offline case
-    FileDownloader.WaitForDownload(Timeout); //Note: this can freeze the main thread
+    FDownloader.OnlyFallbackCache := true; //would use this if we only wanted to fallback to cache in case of download errors / offline case
+    FDownloader.WaitForDownload(Timeout); //Note: this can freeze the main thread
   finally
-    FreeAndNil(FileDownloader);
+    FreeAndNil(FDownloader);
   end;
 end;
 
@@ -482,7 +482,10 @@ end;
 
 initialization
   RegisterSerializationClasses; //don't call Register here, it's called by the IDE automatically on a package installation (fails at runtime)
-  FileCache := TFileCache.Create;
+  DefaultFileCache := TFileCache.Create;
+
+finalization
+  DefaultFileCache := nil; //reference counted (interface reference), so object it points to will be released automatically when its reference count drops to 0
 
 end.
 
