@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E5E0F9AA-5398-41F3-8323-D829E49DCB8C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Source\Zoomicon.Downloader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\Zoomicon.Downloader.Tests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Zoomicon_Downloader">
+        <MSBuild Projects="Source\Zoomicon.Downloader.dproj"/>
+    </Target>
+    <Target Name="Zoomicon_Downloader:Clean">
+        <MSBuild Projects="Source\Zoomicon.Downloader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Zoomicon_Downloader:Make">
+        <MSBuild Projects="Source\Zoomicon.Downloader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Zoomicon_Downloader_Tests">
+        <MSBuild Projects="Test\Zoomicon.Downloader.Tests.dproj"/>
+    </Target>
+    <Target Name="Zoomicon_Downloader_Tests:Clean">
+        <MSBuild Projects="Test\Zoomicon.Downloader.Tests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Zoomicon_Downloader_Tests:Make">
+        <MSBuild Projects="Test\Zoomicon.Downloader.Tests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Zoomicon_Downloader;Zoomicon_Downloader_Tests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Zoomicon_Downloader:Clean;Zoomicon_Downloader_Tests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Zoomicon_Downloader:Make;Zoomicon_Downloader_Tests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
