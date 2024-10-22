@@ -202,6 +202,9 @@
         <DCCReference Include="Zoomicon.Cache.dcp"/>
         <DCCReference Include="Zoomicon.Downloader.Classes.pas"/>
         <DCCReference Include="Zoomicon.Downloader.Models.pas"/>
+        <None Include="..\boss.json"/>
+        <None Include="..\LICENSE.txt"/>
+        <None Include="..\README.md"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -241,6 +244,12 @@
                 </DeployFile>
                 <DeployFile LocalName="..\..\..\..\..\..\Public\Documents\Embarcadero\Studio\21.0\Bpl\Win64\Zoomicon.Downloader.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="..\..\..\..\..\..\Public\Documents\Embarcadero\Studio\21.0\Bpl\Zoomicon.Downloader.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="..\..\..\..\..\Public\Documents\Embarcadero\Studio\23.0\Bpl\Zoomicon.Downloader.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Zoomicon.Downloader.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

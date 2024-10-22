@@ -1,0 +1,31 @@
+{
+  "package": {
+    "name": "Zoomicon.Downloader",
+    "version": "1.0",
+
+    "description": "Downloader for Delphi",
+
+    "author": "George Birbilis - Zoomicon.com",
+    "license": "MIT",
+    
+    "dependencies": {
+        "github.com/zoomicon/zoomicon.cache.delphi": ">0.0.0"
+    }
+
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Zoomicon/Zoomicon.Downloader.Delphi"
+    },
+    "main": "Source/Zoomicon.Downloader.dproj",
+    "test": "Test/Zoomicon.Downloader.Test.dproj",
+
+    "projects": [
+      "Source/Zoomicon.Downloader.dproj",
+      "Test/Zoomicon.Downloader.Test.dproj"
+    ],
+    "files": [
+      "Source/**/*.pas",
+      "Test/**/*.pas"
+    ]
+  }
+}
