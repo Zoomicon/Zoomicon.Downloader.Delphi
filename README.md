@@ -20,4 +20,11 @@ To build from source code you need to install the following, ideally via [Boss P
 
 see [boss.json](https://github.com/Zoomicon/Zoomicon.Downloader.Delphi/blob/master/boss.json)
 
+*Note:*
+
+Using a separate boss.json in the Source subfolder apart from the one at the top-level of the git repository.
+
+This is to be able to use Boss Experts to update dependencies (aka Zoomicon.Cache.Delphi) when one wants to work on the source code of that project.
+
+Also, not using "package" wrapping node in that second boss.json, since Boss-Experts GUI doesn't support reading dependencies with it
 

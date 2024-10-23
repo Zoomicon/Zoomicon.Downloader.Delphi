@@ -88,7 +88,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <SanitizedProjectName>Zoomicon_Downloader</SanitizedProjectName>
-        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;..\modules\.dcp;..\modules\.dcu;..\modules;modules\.dcp;modules\.dcu;modules;modules\zoomicon.cache.delphi\Source;..\modules\zoomicon.cache.delphi\Source;modules\zoomicon.cache.delphi\Test;..\modules\zoomicon.cache.delphi\Test;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
@@ -205,6 +205,7 @@
         <None Include="..\boss.json"/>
         <None Include="..\LICENSE.txt"/>
         <None Include="..\README.md"/>
+        <None Include="boss.json"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
