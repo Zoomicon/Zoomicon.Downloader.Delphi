@@ -1,0 +1,11 @@
+{
+	"name": "Zoomicon.Downloader.Tests",
+	"description": "Zoomicon.Downloader Tests",
+	"version": "1.0.0",
+	"homepage": "https://github.com/Zoomicon/Zoomicon.Downloader.Delphi",
+	"mainsrc": ".",
+	"projects": [],
+	"dependencies": {
+		"github.com/zoomicon/zoomicon.cache.delphi": ">0.0.0"
+	}
+}

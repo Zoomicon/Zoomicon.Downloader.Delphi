@@ -85,7 +85,7 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;..\modules\.dcp;..\modules\.dcu;..\modules;..\modules\zoomicon.cache.delphi\Source;..\modules\zoomicon.cache.delphi\Test;modules\.dcp;modules\.dcu;modules;modules\zoomicon.cache.delphi\Source;modules\zoomicon.cache.delphi\Test;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_Define>_CONSOLE_TESTRUNNER;$(DCC_Define)</DCC_Define>
         <SanitizedProjectName>Zoomicon_Downloader_Tests</SanitizedProjectName>
     </PropertyGroup>
@@ -186,6 +186,7 @@
         <DCCReference Include="Test.Zoomicon.Downloader.pas"/>
         <DCCReference Include="..\Source\Zoomicon.Downloader.Classes.pas"/>
         <DCCReference Include="..\Source\Zoomicon.Downloader.Models.pas"/>
+        <None Include="boss.json"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -237,6 +238,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Win64\Debug\Zoomicon.Downloader.Tests.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="boss.json" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
