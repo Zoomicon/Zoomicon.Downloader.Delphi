@@ -6,6 +6,6 @@
 	"mainsrc": ".",
 	"projects": [],
 	"dependencies": {
-		"github.com/zoomicon/zoomicon.cache.delphi": ">0.0.0"
+		"github.com/zoomicon/zoomicon.cache.delphi": ">=3.0.0"
 	}
 }
