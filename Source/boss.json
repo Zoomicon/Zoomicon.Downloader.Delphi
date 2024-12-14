@@ -1,32 +1,32 @@
 {
-    "name": "Zoomicon.Downloader",
-    "version": "3.0",
+  "name": "Zoomicon.Downloader",
+  "version": "3.0",
 
-    "description": "Downloader for Delphi",
+  "description": "Downloader for Delphi",
 
-    "author": "George Birbilis - Zoomicon.com",
-    "license": "MIT",
+  "author": "George Birbilis - Zoomicon.com",
+  "license": "MIT",
 
-    "dependencies": {
-        "github.com/zoomicon/zoomicon.cache.delphi": ">=3.0.0"
-    },
+  "dependencies": {
+      "github.com/zoomicon/zoomicon.cache.delphi": ">=3.0.0"
+  },
 
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/Zoomicon/Zoomicon.Downloader.Delphi"
-    },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zoomicon/Zoomicon.Downloader.Delphi"
+  },
 
-    "main": "Zoomicon.Downloader.dproj",
-    "test": "../Test/Zoomicon.Downloader.Test.dproj",
+  "main": "Zoomicon.Downloader.dproj",
+  "test": "../Test/Zoomicon.Downloader.Tests.dproj",
 
-    "projects": [
-      "Zoomicon.Downloader.dproj",
-      "../Test/Zoomicon.Downloader.Test.dproj"
-    ],
+  "projects": [
+    "Zoomicon.Downloader.dproj",
+    "../Test/Zoomicon.Downloader.Tests.dproj"
+  ],
 
-    "files": [
-      "**/*.pas",
-      "../Test/**/*.pas"
-    ]
+  "files": [
+    "**/*.pas",
+    "../Test/**/*.pas"
+  ]
 }
 

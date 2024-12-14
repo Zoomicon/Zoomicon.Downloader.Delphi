@@ -17,11 +17,11 @@
   },
 
   "main": "Source/Zoomicon.Downloader.dproj",
-  "test": "Test/Zoomicon.Downloader.Test.dproj",
+  "test": "Test/Zoomicon.Downloader.Tests.dproj",
 
   "projects": [
     "Source/Zoomicon.Downloader.dproj",
-    "Test/Zoomicon.Downloader.Test.dproj"
+    "Test/Zoomicon.Downloader.Tests.dproj"
   ],
 
   "files": [
