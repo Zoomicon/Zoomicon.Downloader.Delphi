@@ -1,7 +1,7 @@
 {
   "package": {
     "name": "Zoomicon.Downloader",
-    "version": "1.0",
+    "version": "3.0",
 
     "description": "Downloader for Delphi",
 
@@ -9,7 +9,7 @@
     "license": "MIT",
     
     "dependencies": {
-        "github.com/zoomicon/zoomicon.cache.delphi": ">0.0.0"
+        "github.com/zoomicon/zoomicon.cache.delphi": ">3.0.0"
     },
 
     "repository": {
@@ -24,6 +24,7 @@
       "Source/Zoomicon.Downloader.dproj",
       "Test/Zoomicon.Downloader.Test.dproj"
     ],
+
     "files": [
       "Source/**/*.pas",
       "Test/**/*.pas"
